@@ -18,7 +18,7 @@ export const LoginSchema = Yup.object({
 
 export const RegisterSchema = Yup.object({
 
-    name: Yup.string()
+    fullName: Yup.string()
         .min(6, "Must be at least 6 charecters")
         .matches(/^[A-Za-z\s]+$/, "Names cannot contain numbers or special charecters.")
         .required('Required'),
@@ -27,7 +27,7 @@ export const RegisterSchema = Yup.object({
         .email('Enter valid email')
         .required('Required'),
 
-    phonenumber: Yup.string()
+    phone: Yup.string()
         .matches(/^9[0-9]{9}$/, "Numbers must start from 9 and have 10 digits.")
         .required("Required"),
 
@@ -38,7 +38,7 @@ export const RegisterSchema = Yup.object({
         .matches(/[0-9]/, "Must contain at least 1 number.")
         .required("Required"),
 
-    confirmpassword: Yup.string()
+    confirmPassword: Yup.string()
         .oneOf([Yup.ref('password')], "Passwords must match.")
         .required('Required'),
 
@@ -52,15 +52,15 @@ export const ForgotSchema = Yup.object({
 });
 
 export const ResetSchema = Yup.object({
-    newpassword: Yup.string()
+    newPassword: Yup.string()
         .min(8, "Must be at least 8 characters")
         .matches(/[a-z]/, "Must contain at least 1 small letter.")
         .matches(/[A-Z]/, "Must contain at least 1 capital letter.")
         .matches(/[0-9]/, "Must contain at least 1 number.")
         .required("Required"),
 
-    confirmpassword: Yup.string()
-        .oneOf([Yup.ref('newpassword')], "Confirm Password must match New Password.")
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref('newPassword')], "Confirm Password must match New Password.")
         .required('Required'),
 
 
