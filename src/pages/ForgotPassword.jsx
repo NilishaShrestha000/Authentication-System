@@ -30,8 +30,8 @@ const ForgotPassword = () => {
                 }}>
                 {(formik) => (
                     <div className="bg-gray-100 h-screen">
-                        <div className="md:px-30 md:py-10 lg:px-80 lg:py-20 h-screen transition-all">
-                            <div className="bg-white md:rounded-2xl md:border h-full flex">
+                        <div className="flex items-center justify-center h-screen transition-all">
+                            <div className=" w-full h-full md:h-3/4 md:w-3/5 bg-white md:rounded-2xl md:border h-full flex">
 
                                 {/*left pannel*/}
 
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
                                     </div>
 
 
-                                    <Form className='p-10 w-full md:w-3/4 mx-auto mt-5 '>
+                                    <Form className='md:p-5 p-4 w-full md:w-3/4 mx-auto mt-5 '>
 
                                         <div>
                                             <FormInput
@@ -70,12 +70,10 @@ const ForgotPassword = () => {
 
 
                                 {/*right pannel*/}
-                                <div className="hidden md:block">
-                                    <div className="w-80 flex bg-violet-50 items-center justify-center">
-                                        <div className="items-center">
-                                            <img src="/forgot.png"></img>
-                                        </div>
-                                    </div>
+                                <div className="hidden md:flex bg-violet-50 w-1/2  items-center justify-center rounded-r-2xl">
+
+                                    <img src="/forgot.png"
+                                        className="h-full"></img>
                                 </div>
 
 

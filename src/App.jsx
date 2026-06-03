@@ -1,19 +1,17 @@
-import { useState } from 'react'
+
 import './App.css'
-import Navbar from './components/Navbar'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import ForgotPassword from './pages/ForgotPassword'
-import ResetPassword from './pages/ResetPassword'
+import Layout from './components/Layout'
+import { BrowserRouter } from 'react-router-dom'
+
 
 function App() {
 
 
   return (
     <>
-      <Navbar />
-
+      <BrowserRouter>
+        <Layout />
+      </BrowserRouter>
     </>
   )
 }

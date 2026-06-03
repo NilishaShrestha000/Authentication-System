@@ -37,9 +37,9 @@ const Register = () => {
                 }}>
                 {(formik) => (
                     <div className=" bg-gray-100 sm:min-h-screen">
-                        <div className="md:px-30 md:py-10 md:h-screen transition-all">
+                        <div className="flex items-center justify-center min-h-screen transition-all">
 
-                            <div className="bg-white h-full w-full py-4 flex flex-col items-center justify-center md:rounded-2xl md:border-3">
+                            <div className="bg-white h-full w-full md:h-3/4 md:w-3/5 flex flex-col items-center justify-center md:rounded-2xl md:border-3 pt-5">
 
                                 <div className=" flex flex-col items-center text-center md:gap-4">
                                     <div className="flex text-violet-600 items-center justify-center w-15 h-15  bg-violet-100 rounded-full"><FaRegUser className="text-2xl" /></div>

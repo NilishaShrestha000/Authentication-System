@@ -1,3 +1,4 @@
+import { MdRememberMe } from "react-icons/md";
 import * as Yup from "yup";
 
 export const LoginSchema = Yup.object({
@@ -12,7 +13,10 @@ export const LoginSchema = Yup.object({
         .matches(/[a-z]/, "Must contain at least 1 small letter.")
         .matches(/[A-Z]/, "Must contain at least 1 capital letter.")
         .matches(/[0-9]/, "Must contain at least 1 number.")
-        .required("Required")
+        .required("Required"),
+
+    rememberMe: Yup.boolean()
+        .oneOf([true, false], "Invalid vaue").notRequired(),
 
 });
 

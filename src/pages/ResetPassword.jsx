@@ -34,9 +34,9 @@ const ResetPassword = () => {
 
                 {(formik) => (
                     <div className=" bg-gray-100 min-h-screen">
-                        <div className="md:px-30 md:py-10 h-screen transition-all">
+                        <div className="flex items-center justify-center h-screen transition-all">
 
-                            <div className="bg-white md:rounded-2xl md:border h-full flex">
+                            <div className="flex w-full h-full md:h-3/4 md:w-3/5  md:border-3 rounded-2xl">
 
                                 {/*left pannel*/}
                                 <div className=" w-full h-full flex flex-col items-center justify-center md:rounded-r-2xl">
