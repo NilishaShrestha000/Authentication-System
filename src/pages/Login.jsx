@@ -4,14 +4,14 @@ import FormInput from "../components/FormInput";
 import Checkbox from "../components/Checkbox"
 import { Button } from "../components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { TbWorld } from "react-icons/tb";
 import { LoginSchema } from "@/validation/authSchema";
 import { ToastContainer, toast } from "react-toastify";
 import Api from "@/Api/api";
+import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
     const navigate = useNavigate();
-
+    const { login } = useAuth();
     return (
         <>
             <Formik
@@ -24,13 +24,15 @@ const Login = () => {
                 validationSchema={LoginSchema}
                 onSubmit={async (values) => {
                     try {
+
                         const res = await Api.post("/api/auth/login", {
                             email: values.email,
                             password: values.password,
                         });
-                        localStorage.setItem("token", res.data.token);
+                        const token = res.data.accessToken;
+                        login(token);
                         toast("Conpleted Login");
-                        setTimeout(() => navigate("/"), 2000);
+                        setTimeout(() => navigate("/dashboard"), 1000);
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")
                     }

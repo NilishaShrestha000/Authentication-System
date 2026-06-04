@@ -1,17 +1,21 @@
 
 import './App.css'
 import Layout from './components/Layout'
-import { BrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import router from './components/router'
+
 
 
 function App() {
 
-
   return (
     <>
-      <BrowserRouter>
-        <Layout />
-      </BrowserRouter>
+
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+
     </>
   )
 }

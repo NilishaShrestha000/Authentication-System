@@ -2,13 +2,13 @@ import { Formik, Form } from "formik";
 import { FaLock } from "react-icons/fa";
 import FormInput from "../components/FormInput";
 import { Button } from "../components/ui/button";
-import { Link } from "react-router-dom"
-import { TbWorld } from "react-icons/tb";
+import { Link, useNavigate } from "react-router-dom"
 import { ResetSchema } from "@/validation/authSchema";
 import { ToastContainer, toast } from "react-toastify";
 import Api from "@/Api/api";
 
 const ResetPassword = () => {
+    const navigate = useNavigate();
     const param = new URLSearchParams(window.location.search);
     const token = param.get("token");
     return (
@@ -27,6 +27,7 @@ const ResetPassword = () => {
                             confirmPassword: values.confirmPassword
                         });
                         toast("Paasword updated!")
+                        navigate("/dashboard")
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")
                     }
@@ -74,8 +75,9 @@ const ResetPassword = () => {
                                             <ToastContainer />
                                         </div>
 
-                                        <div className="mt-5 justify-center flex">
+                                        <div className="mt-5  flex justify-between">
                                             <Link to="/login" className="text-violet-600 hover:text-red-500">Back to Login</Link>
+                                            <Link to="/forgot-password" className="text-violet-600 hover:text-red-500">Click here to get the Reset Password</Link>
                                         </div>
 
                                     </Form>

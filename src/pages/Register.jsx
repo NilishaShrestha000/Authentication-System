@@ -1,14 +1,16 @@
 import { Formik, Form } from "formik";
 import { FaRegUser } from "react-icons/fa";
 import FormInput from "../components/FormInput";
-import Checkbox from "../components/Checkbox"
 import { Button } from "../components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterSchema } from "@/validation/authSchema";
 import { ToastContainer, toast } from "react-toastify";
 import Api from "@/Api/api";
+import { useAuth } from "@/context/AuthContext";
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { login } = useAuth();
     return (
         <>
             <Formik
@@ -22,6 +24,7 @@ const Register = () => {
                 validationSchema={RegisterSchema}
                 onSubmit={async (values) => {
                     try {
+
                         const res = await Api.post("/api/auth/register", {
                             fullName: values.fullName,
                             email: values.email,
@@ -29,8 +32,9 @@ const Register = () => {
                             password: values.password,
                             confirmPassword: values.confirmPassword
                         });
-                        localStorage.setItem("token", res.data.token)
+                        login(res.data.token);
                         toast("Registration completed!");
+                        setTimeout(() => navigate("/login"), 2000);
                     } catch (err) {
                         toast.error(err.response?.data?.message || "registration Failed");
                     }

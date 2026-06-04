@@ -17,7 +17,7 @@ const NavLinks = ({ closeSideBar }) => {
                 <IoSettingsOutline />Settings</Link>
             <div className="hover:bg-slate-600 px-4 rounded-lg py-5 flex gap-10 items-center"><TbMessage2 />Messages</div>
             <div className="hover:bg-slate-600 px-4 rounded-lg py-5 flex gap-10 items-center"><IoIosTimer />Activity</div>
-            <Link to="/login" onClick={() => closeSideBar?.()} className="hover:bg-slate-600 px-4 rounded-lg py-5 flex gap-10 items-center">
+            <Link to="/logout" onClick={() => closeSideBar?.()} className="hover:bg-slate-600 px-4 rounded-lg py-5 flex gap-10 items-center">
                 <MdLogout /><span>Logout</span>
             </Link>
         </>
