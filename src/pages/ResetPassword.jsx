@@ -21,6 +21,10 @@ const ResetPassword = () => {
                 validationSchema={ResetSchema}
                 onSubmit={async (values) => {
                     try {
+                        if (!token) {
+                            toast.error("You need token to reset/update passwword")
+                            return
+                        };
                         const res = await Api.post("/api/auth/reset-password", {
                             token: token,
                             newPassword: values.newPassword,
@@ -28,6 +32,7 @@ const ResetPassword = () => {
                         });
                         toast("Paasword updated!")
                         navigate("/dashboard")
+
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")
                     }
@@ -77,7 +82,7 @@ const ResetPassword = () => {
 
                                         <div className="mt-5  flex justify-between">
                                             <Link to="/login" className="text-violet-600 hover:text-red-500">Back to Login</Link>
-                                            <Link to="/forgot-password" className="text-violet-600 hover:text-red-500">Click here to get the Reset Password</Link>
+                                            <Link to="/forgot-password" className="text-violet-600 hover:text-red-500">Click here to get the Reset Password Token</Link>
                                         </div>
 
                                     </Form>
