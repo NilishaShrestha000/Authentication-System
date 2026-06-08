@@ -23,7 +23,7 @@ const Detail = () => {
     return (
         <div className="p-10">
             <div className="border p-5 lg:flex lg:gap-5">
-                <img src={service.imageUrl} ></img>
+                <img src={service.image} ></img>
                 <div>
                     <div className="font-bold text-wide text-3xl lg:text-4xl sm:mt-2"> {service.title} </div>
                     <div className="text-lg sm:text-xl mt-2">{service.description}</div>

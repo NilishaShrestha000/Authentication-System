@@ -32,7 +32,7 @@ const Login = () => {
                         const token = res.data.accessToken;
                         login(token);
                         toast("Conpleted Login");
-                        setTimeout(() => navigate("/dashboard"), 1000);
+                        setTimeout(() => navigate("/"), 1000);
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")
                     }

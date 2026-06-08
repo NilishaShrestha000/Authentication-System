@@ -31,7 +31,7 @@ const ResetPassword = () => {
                             confirmPassword: values.confirmPassword
                         });
                         toast("Paasword updated!")
-                        navigate("/dashboard")
+                        navigate("/login")
 
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")

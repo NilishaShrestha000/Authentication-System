@@ -1,79 +1,56 @@
-import { Routes, Route, useLocation } from "react-router-dom"
-import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
-import ForgotPassword from "../pages/ForgotPassword";
-import Register from "../pages/Register";
-import ResetPassword from "../pages/ResetPassword";
-import Authenticate from "@/pages/Authenticate";
-import Detail from "@/pages/Detail";
-import Logout from "@/pages/Logout";
-import { useState } from "react";
-import Sidebar from "./Sidebar";
+import { useLocation, Outlet, Link } from "react-router-dom"
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import ProtectedRoute from "@/Routes/ProtectedRoute";
-import GuestRoute from "@/Routes/GuestRoute";
+import NavLinks from "./NavLinks";
+
+const style = {
+    screen: "flex flex-col min-h-screen w-full bg-background",
+    slide: "fixed inset-0 z-50 flex flex-col bg-background",
+    close: "text- hover:text-orange-400 text-lg cursor-pointer px-6"
+}
 
 const Layout = () => {
     const location = useLocation();
-    const isLoginPage = location.pathname === "/login";
-    const isForgotPasswordPage = location.pathname === "/forgot-password";
-    const isRegisterPage = location.pathname === "/register";
-    const isResetPasswordPage = location.pathname === "/reset-password";
-    const hideNavbar = isLoginPage || isForgotPasswordPage || isRegisterPage || isResetPasswordPage
+    const hideNavbar = ["/login", "/register", "forgot-password", "resetpassword"].includes(location.pathname);
     const [slide, setSlide] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 1024) {
+                setSlide(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
 
     return (
-        <div className="flex min-h-screen w-full overflow-hidden">
+        <div className={style.screen}>
+            {!hideNavbar && !slide && <Navbar setSlide={setSlide} />}
 
-            {!hideNavbar && <Sidebar slide={slide} setSlide={setSlide} />}
-
-            <div className="flex flex-col flex-1">
-
-                {!hideNavbar && <Navbar setSlide={setSlide} />}
-
-                <main className="flex-1 overflow-auto ">
-                    <Routes>
-
-                        <Route path="/" element={<Authenticate />}></Route>
-                        <Route path="/services/:id" element={<Detail />}></Route>
-                        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-                        <Route path="/reset-password" element={<ResetPassword />}></Route>
-
-                        <Route path="/login" element={<Login />}></Route>
-                        <Route path="/register" element={<Register />}></Route>
+            {slide &&
+                <div className={style.slide} >
 
 
-                        <Route path="/dashboard" element={
-                            <ProtectedRoute><Dashboard /></ProtectedRoute>
-                        }></Route>
-
-                        <Route path="/logout" element={
-                            <ProtectedRoute><Logout /></ProtectedRoute>
-                        }></Route>
-
-                        <Route
-                            path="/login"
-                            element={
-                                <GuestRoute>
-                                    <Login />
-                                </GuestRoute>
-                            }
-                        />
-
-                        <Route
-                            path="/register"
-                            element={
-                                <GuestRoute>
-                                    <Register />
-                                </GuestRoute>
-                            }
-                        />
-
-                    </Routes>
-                </main>
-            </div >
+                    <div className="flex  justify-between items-center px-6 h-16">
+                        <Link to="/" className="flex items-center">
+                            <img src="/yenya.png" />
+                        </Link>
+                        <button className={style.close} onClick={() => setSlide(false)}>Close</button>
+                    </div>
+                    <nav className="flex flex-col">
+                        <NavLinks closeMenu={() => setSlide(false)} isMobile={true} />
+                    </nav>
+                </div>
+            }
+            <main className="flex-1 overflow-auto ">
+                <Outlet />
+            </main>
         </div >
+
+
     )
 }
 

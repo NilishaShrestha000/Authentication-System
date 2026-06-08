@@ -1,54 +1,48 @@
 
-import { Form, Formik } from "formik";
-import { IoMenuSharp } from "react-icons/io5";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa";
-import { toast } from "react-toastify";
-import GuestRoute from "@/Routes/GuestRoute";
 import { Link } from "react-router-dom";
-import ProtectedRoute from "@/Routes/ProtectedRoute";
 import { useAuth } from "@/context/AuthContext";
+import NavLinks from "./NavLinks";
+import { useTheme } from "@/context/ThemeContext";
 
+const style = {
+    wrapper: "bg-background text-foreground h-16 w-full shadow-lg px-6 flex justify-between items-center border dark:border-b-gray-700",
+    text: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-border rounded-2xl px-4 py-5 h-10",
+    button: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-border rounded-2xl px-4 py-5 h-10 lg:hidden"
+}
 
 const Navbar = ({ setSlide }) => {
 
     const { isAuthenticated } = useAuth();
+    const { theme, toggleTheme } = useTheme();
+
     return (
         <>
-            <Formik
-                initialValues={{
-                    profile: "",
-                }}
-                onSubmit={() => toast("Profile View")
-                }
-            >
+            <div className={style.wrapper}>
 
-                <div className="bg-white h-16 w-full shadow-lg px-6 flex justify-between items-center  ">
+                <Link to="/" className="flex items-center">
+                    <img src="/yenya.png" />
+                </Link>
 
-                    {/*Menu*/}
-                    <div className="text-gray-500 hover:text-gray-700 cursor-pointer text-3xl md:hidden" onClick={() => setSlide(true)}><IoMenuSharp /></div>
-
-                    {/*Noti & profile*/}
-                    <div className="flex gap-10 items-center">
-                        {/*Notification*/}
-                        <IoMdNotificationsOutline className="text-gray-500 hover:text-gray-700 cursor-pointer text-3xl" />
-                        {/*Profile*/}
-
-                        {!isAuthenticated ?
-                            (
-                                <>
-                                    <Link to="/register">Sign Up</Link>
-                                    <Link to="/login" >Sign In</Link>
-                                </>
-                            )
-                            :
-                            (<Link to="/logout">Logout</Link>)}
-
-
-                    </div>
+                <div className="hidden lg:flex gap-6">
+                    <NavLinks />
                 </div>
 
-            </Formik >
+                <button className={style.button} onClick={() => setSlide(true)}>Menu</button>
+
+
+                <div className="flex gap-5">
+                    <button onClick={toggleTheme} className="text-foreground hover:text-orange-400">
+                        {theme === 'dark' ? "☀️" : "🌑"}
+                    </button>
+
+                    {!isAuthenticated ?
+                        (<Link to="/login" className={style.text}>Sign In</Link>)
+                        :
+                        (<Link to="/logout" className={style.text}>Logout</Link>)
+                    }
+                </div>
+            </div>
+
         </>
     )
 }

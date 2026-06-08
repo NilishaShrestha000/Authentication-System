@@ -4,6 +4,7 @@ import Layout from './components/Layout'
 import { RouterProvider } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import router from './components/router'
+import { ThemeProvider } from './context/ThemeContext'
 
 
 
@@ -11,11 +12,11 @@ function App() {
 
   return (
     <>
-
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </ThemeProvider>
     </>
   )
 }
