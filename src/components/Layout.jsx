@@ -2,6 +2,7 @@ import { useLocation, Outlet, Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import NavLinks from "./NavLinks";
+import Footer from "./Footer";
 
 const style = {
     screen: "flex flex-col min-h-screen w-full bg-background",
@@ -45,9 +46,11 @@ const Layout = () => {
                     </nav>
                 </div>
             }
-            <main className="flex-1 overflow-auto ">
+            <main className="flex-1 overflow-auto">
                 <Outlet />
             </main>
+
+            <Footer />
         </div >
 
 

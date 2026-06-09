@@ -5,9 +5,9 @@ import NavLinks from "./NavLinks";
 import { useTheme } from "@/context/ThemeContext";
 
 const style = {
-    wrapper: "bg-background text-foreground h-16 w-full shadow-lg px-6 flex justify-between items-center border dark:border-b-gray-700",
-    text: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-border rounded-2xl px-4 py-5 h-10",
-    button: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-border rounded-2xl px-4 py-5 h-10 lg:hidden"
+    wrapper: "bg-background text-foreground h-16 w-full shadow-lg px-2 flex justify-between items-center border dark:border-b-gray-700",
+    text: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-gray-300 hover:border-orange-400 rounded-2xl px-4 py-5 h-10",
+    button: "flex text-foreground hover:text-orange-400 font-semibold items-center cursor-pointer border border-gray-300 hover:border-orange-400 rounded-2xl px-4 py-5 h-10 lg:hidden"
 }
 
 const Navbar = ({ setSlide }) => {
@@ -19,7 +19,7 @@ const Navbar = ({ setSlide }) => {
         <>
             <div className={style.wrapper}>
 
-                <Link to="/" className="flex items-center">
+                <Link to="/" className="flex items-center ">
                     <img src="/yenya.png" />
                 </Link>
 
@@ -30,7 +30,7 @@ const Navbar = ({ setSlide }) => {
                 <button className={style.button} onClick={() => setSlide(true)}>Menu</button>
 
 
-                <div className="flex gap-5">
+                <div className="flex gap-2 lg:gap-5">
                     <button onClick={toggleTheme} className="text-foreground hover:text-orange-400">
                         {theme === 'dark' ? "☀️" : "🌑"}
                     </button>
