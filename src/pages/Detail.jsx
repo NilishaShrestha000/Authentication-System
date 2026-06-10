@@ -1,11 +1,12 @@
 import Api from "@/Api/api";
 import { useNavigate, useParams } from "react-router-dom";
-import useServices from "@/components/useServices";
+import useServices from "@/hooks/useServices";
+import useServiceId from "@/hooks/useServiceId";
 
 const Detail = () => {
     const { id } = useParams();
     const { data } = useServices();
-    const { service } = useServices();
+    const { service } = useServiceId();
     const navigate = useNavigate();
 
     return (
@@ -30,12 +31,14 @@ const Detail = () => {
             </div>
 
             {/*explore other services*/}
-            <div className="font-lg mt-10">Explore more services</div>
-            <div className="flex gap-4 transition-all mt-3 overflow-scroll scrollbar-hide">
+            <div className={` text-lg lg:text-2xl m-5 text-center font-bold`}>
+                Explore more services
+            </div>
+            <div className="flex gap-4 px-5 py-2 transition-all overflow-scroll scrollbar-none">
                 {data.filter(item => item.id !== id).map((item) => (
                     <div key={item.id}
                         onClick={() => navigate(`/services/${item.id}`)}
-                        className="group bg-white/10 hover:bg-violet-400/15 border border-gray-500 hover:border-violet-400/60 hover:text-violet-400 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.05] px-4 py-3">
+                        className="group min-w-50 bg-white/10 hover:bg-violet-400/15 border border-gray-500 hover:border-violet-400/60 hover:text-violet-400 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.05] px-4 py-3">
                         <img src={`${Api.defaults.baseURL}/public/${item.image}`} className="w-full"></img>
                         <div className="font-bold text-base">{item.title}</div>
                         <p className="text-sm text-slate-400">{item.shortDescription}</p>

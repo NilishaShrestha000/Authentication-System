@@ -4,7 +4,6 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import ContactUs from "@/pages/ContactUs";
 import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
 import ForgotPassword from "../pages/ForgotPassword";
 import Register from "../pages/Register";
 import ResetPassword from "../pages/ResetPassword";
@@ -15,14 +14,12 @@ import ProtectedRoute from "@/Routes/ProtectedRoute";
 import GuestRoute from "@/Routes/GuestRoute";
 import Layout from "./Layout";
 
-
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
         children: [
             { index: true, element: <Yenya /> },
-            { path: "home", element: <Home /> },
             { path: "contact", element: <ContactUs /> },
             { path: "services", element: <Services /> },
             { path: "services/:id", element: <Detail /> },
@@ -47,10 +44,10 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "dashboard",
+                path: "home",
                 element: (
                     <ProtectedRoute>
-                        <Dashboard />
+                        <Home />
                     </ProtectedRoute>
                 ),
             },

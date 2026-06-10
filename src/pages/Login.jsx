@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Api from "@/Api/api";
 import { useAuth } from "@/context/AuthContext";
 
+
 const Login = () => {
     const navigate = useNavigate();
     const { login } = useAuth();
@@ -32,7 +33,7 @@ const Login = () => {
                         const token = res.data.accessToken;
                         login(token);
                         toast("Conpleted Login");
-                        setTimeout(() => navigate("/"), 1000);
+                        setTimeout(() => navigate("/home"), 1000);
                     } catch (err) {
                         toast.error(err.response?.data?.message || "Not valid")
                     }

@@ -32,7 +32,7 @@ const Register = () => {
                             password: values.password,
                             confirmPassword: values.confirmPassword
                         });
-                        login(res.data.token);
+                        login(res.data.ascessToken);
                         toast("Registration completed!");
                         setTimeout(() => navigate("/login"), 2000);
                     } catch (err) {

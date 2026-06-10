@@ -1,12 +1,10 @@
 import Api from "@/Api/api";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { LuLayoutDashboard } from "react-icons/lu";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { TiDocumentDelete } from "react-icons/ti";
-import { IoRocketOutline } from "react-icons/io5";
-import useServices from "@/components/useServices";
+import useServices from "@/hooks/useServices";
+import useProfile from "@/hooks/useProfile";
+import ServiceSummary from "@/hooks/ServiceSummary";
+import TechStack from "@/hooks/TechStack";
 
 const style = {
     wrapper: " px-7 py-5 lg:px-13 lg:py-10 min-h-full w-full",
@@ -26,23 +24,7 @@ const Yenya = () => {
 
     const navigate = useNavigate();
     const { data } = useServices();
-    const { isAuthenticated } = useAuth();
-
-    const [userName, setUserName] = useState('Guest')
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            const fetchProfile = async () => {
-                try {
-                    const res = await Api.get("/api/auth/profile");
-                    setUserName(res.data.fullName)
-                } catch (err) {
-                    console.log(err);
-                }
-            }
-            fetchProfile();
-        }
-    }, [isAuthenticated]);
+    const { userName } = useProfile();
 
     return (
         <div className={style.wrapper}>
@@ -59,38 +41,10 @@ const Yenya = () => {
                 HERE'S WHAT WE OFFER
             </div>
 
-            {data && <div className={style.flashservicelist}>
-                <div className={style.border}>
-                    <div className={style.icon}>< LuLayoutDashboard /></div>
-                    <div className={style.text}>{data.length}</div>
-                    <div className={style.names}>TOTAL SERVICES</div>
-                </div>
-                <div className={style.border}>
-                    <div className={style.icon}>< FaRegCircleCheck /></div>
-                    <div className={style.text}>{data.length}</div>
-                    <div className={style.names}>AVAILABLE NOW</div>
-                </div>
-                <div className={style.border}>
-                    <div className={style.icon}>< TiDocumentDelete /></div>
-                    <div className={style.text}>{[...new Set(data.flatMap(d => d.tags))].length}</div>
-                    <div className={style.names}>TOTAL TECH STACK</div>
-                </div>
-                <div className={style.border}>
-                    <div className={style.icon}>< IoRocketOutline /></div>
-                    <div className={style.text}>
-                        {data.filter(d => {
-                            const created = new Date(d.createdAt);
-                            const now = new Date();
-                            return created.getMonth() === now.getMonth() && created.getFullYear() === now.getFullYear();
-                        }).length}
-                    </div>
-                    <div className={style.names}>NEW THIS MONTH</div>
-                </div>
-            </div>}
-
+            <ServiceSummary />
 
             {/* list of services */}
-            <div className={` text-lg lg:text-2xl m-5 text-center font-bold`}>
+            <div className={` text-lg lg:text-2xl m-5 text-center font-bold text-orange-400`}>
                 List of Services
             </div>
 
@@ -111,32 +65,10 @@ const Yenya = () => {
 
 
             {/* List of tech stack */}
-            <div className="border border-gray-500 shadow-lg hover:shadow-xl items-center rounded-xl p-2 bg-white/10 mt-10">
-                {data && (
-                    <div >
-                        <div className="flex justify-between mt-5 px-5">
-                            <div className="text-lg lg:text-2xl font-bold">Tech Stack</div>
-                            <div className="text-sm lg:text-xl text-orange-400 font-medium">
-                                {[...new Set(data.flatMap(d => d.tags))].length} technologies
-                            </div>
-                        </div>
-
-                        <div className="flex gap-4 transition-all flex-wrap p-9">
-                            {[...new Set(data.flatMap(d => d.tags))].map((tag, index) => (
-                                <div
-                                    key={index}
-                                    className={style.techborder}>
-                                    <span className={style.circle}></span>
-                                    <div className=" text-md lg:text-xl">{tag} </div>
-                                </div>
-                            ))}
-
-                        </div>
-                    </div>
-                )}
-
-
+            <div>
+                <TechStack />
             </div>
+
         </div>
     )
 }
