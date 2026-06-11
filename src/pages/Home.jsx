@@ -4,6 +4,7 @@ import ServiceSummary from "@/hooks/ServiceSummary";
 import { Link } from "react-router-dom";
 import TechStack from "@/hooks/TechStack";
 import PostServices from "@/hooks/PostServices";
+import { useAuth } from "@/context/AuthContext";
 
 const style = {
     wrapper: "px-7 py-5 lg:px-13 lg:py-10 min-h-full w-full",
@@ -16,6 +17,7 @@ const style = {
 const Home = () => {
     const { userName } = useProfile();
     const { data } = useServices();
+    const { user } = useAuth();
     return (
         <>
             <div className={style.wrapper}>
@@ -68,14 +70,17 @@ const Home = () => {
                             <h1>Ready to start your project?</h1>
                             <p>Let's build something great together.</p>
                         </div>
-                        <div>
+                        <Link to="/contact" className={`${style.book} text-[10px] items-center flex h-7`}>
                             Contact us
-                        </div>
+                        </Link>
                     </div>
                 </div>
 
-                <div className="mt-5">
-                    <PostServices />
+                <div>
+                    <p className="mt-5 text-center font-semibold text-lg">This section is only available for admins</p>
+                    {user?.role === "admin" && (
+                        <PostServices />
+                    )}
                 </div>
 
             </div >
