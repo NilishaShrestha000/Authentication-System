@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import TechStack from "@/hooks/TechStack";
 import PostServices from "@/hooks/PostServices";
 import { useAuth } from "@/context/AuthContext";
+import ManageService from "@/hooks/ManageSErvice";
 
 const style = {
     wrapper: "px-7 py-5 lg:px-13 lg:py-10 min-h-full w-full",
@@ -77,10 +78,19 @@ const Home = () => {
                 </div>
 
                 <div>
-                    <p className="mt-5 text-center font-semibold text-lg">This section is only available for admins</p>
                     {user?.role === "admin" && (
-                        <PostServices />
+                        <>
+                            <p className="mt-5 text-center font-semibold text-lg">This section is only available for admins</p>
+
+
+                            <PostServices />
+
+                            <ManageService />
+
+                        </>
                     )}
+
+
                 </div>
 
             </div >

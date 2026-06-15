@@ -9,7 +9,7 @@ const FormInput = ({ label, type, ...props }) => {
     const [showPassword, setShowPassword] = useState(false);
     const isPassword = type === "password";
     return (
-        <div className="relative">
+        <div className="relative mt-5">
             <Label htmlFor={props.id || props.name}>{label}</Label>
             <Input
                 {...props}

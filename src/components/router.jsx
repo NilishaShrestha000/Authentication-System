@@ -13,11 +13,17 @@ import Logout from "@/pages/Logout";
 import ProtectedRoute from "@/Routes/ProtectedRoute";
 import GuestRoute from "@/Routes/GuestRoute";
 import Layout from "./Layout";
+import PatchServives from "@/pages/PatchServices";
+
+import ErrorPage from "@/hooks/ErrorPage";
+import Querries from "@/pages/Querries";
+import QuerryDetail from "@/pages/QuerryDetail";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: <ErrorPage />,
         children: [
             { index: true, element: <Yenya /> },
             { path: "contact", element: <ContactUs /> },
@@ -60,6 +66,34 @@ const router = createBrowserRouter([
                     </ProtectedRoute>
                 ),
             },
+
+
+            {
+                path: "admin/services/:id/patch",
+                element: (
+                    <ProtectedRoute>
+                        <PatchServives />
+                    </ProtectedRoute>)
+            },
+
+
+            {
+                path: "admin/queries",
+                element: (
+                    <ProtectedRoute>
+                        <Querries />
+                    </ProtectedRoute>
+                )
+            },
+
+            {
+                path: "/querry/:id",
+                element: (
+                    <ProtectedRoute>
+                        <QuerryDetail />
+                    </ProtectedRoute>
+                )
+            }
         ],
     },
 ]);

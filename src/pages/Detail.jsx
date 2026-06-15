@@ -2,6 +2,7 @@ import Api from "@/Api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import useServices from "@/hooks/useServices";
 import useServiceId from "@/hooks/useServiceId";
+import DeleteService from "@/hooks/DeleteService";
 
 const Detail = () => {
     const { id } = useParams();
@@ -28,6 +29,7 @@ const Detail = () => {
                         ))}
                     </ul>
                 </div>
+
             </div>
 
             {/*explore other services*/}

@@ -3,7 +3,7 @@ import NavLinks from "./NavLinks";
 import useServices from "../hooks/useServices";
 import { GrPhone } from "react-icons/gr";
 import { GrMapLocation } from "react-icons/gr";
-import { FaDiscord } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
 
             <div className=" flex flex-row gap-5 items-center justify-center text-2xl mb-5">
-                <a href="https://discord.com/1208006659490979850" target="_blank"><FaDiscord /></a>
+                <a href="https://github.com/NilishaShrestha000/Authentication-System" target="_blank"><FaGithub /></a>
                 <a href="https://wa.me/9779863034097" target="_blank"><FaWhatsapp /></a>
                 <a href="https://www.linkedin.com/company/yenya-soft-private-limited/posts/?feedView=all" target="_blank"><FaLinkedin /></a>
             </div >
