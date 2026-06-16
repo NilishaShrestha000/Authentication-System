@@ -13,7 +13,7 @@ import Logout from "@/pages/Logout";
 import ProtectedRoute from "@/Routes/ProtectedRoute";
 import GuestRoute from "@/Routes/GuestRoute";
 import Layout from "./Layout";
-import PatchServives from "@/pages/PatchServices";
+import PatchServives from "@/pages/DisplayPatchServices";
 
 import ErrorPage from "@/hooks/ErrorPage";
 import Querries from "@/pages/Querries";
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/querry/:id",
+                path: "admin/querry/:id",
                 element: (
                     <ProtectedRoute>
                         <QuerryDetail />

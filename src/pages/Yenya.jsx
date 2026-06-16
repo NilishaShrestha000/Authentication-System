@@ -1,7 +1,7 @@
 import Api from "@/Api/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import useServices from "@/hooks/useServices";
+import useServices from "@/hooks/Services/useServices";
 import useProfile from "@/hooks/useProfile";
 import ServiceSummary from "@/hooks/ServiceSummary";
 import TechStack from "@/hooks/TechStack";

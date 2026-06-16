@@ -1,11 +1,11 @@
 import useProfile from "@/hooks/useProfile";
-import useServices from "@/hooks/useServices";
+import useServices from "@/hooks/Services/useServices";
 import ServiceSummary from "@/hooks/ServiceSummary";
 import { Link } from "react-router-dom";
 import TechStack from "@/hooks/TechStack";
-import PostServices from "@/hooks/PostServices";
+import PostServices from "@/hooks/Services/PostServices";
 import { useAuth } from "@/context/AuthContext";
-import ManageService from "@/hooks/ManageSErvice";
+import ManageService from "@/hooks/Services/PatchService";
 
 const style = {
     wrapper: "px-7 py-5 lg:px-13 lg:py-10 min-h-full w-full",

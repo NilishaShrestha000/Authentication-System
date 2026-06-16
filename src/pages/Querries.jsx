@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import GetContact from "@/hooks/GetContact"
+import GetContact from "@/hooks/Contact/GetContact"
 import { useNavigate } from "react-router-dom";
-import PatchContact from "@/hooks/PatchContact";
+import PatchContact from "@/hooks/Contact/PatchContact";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const style = {
     wrapper: "px-7 py-5 lg:px-13 lg:py-10 min-h-full w-full",
@@ -17,7 +18,7 @@ const Querries = () => {
     const { data } = GetContact();
     const navigate = useNavigate();
     const { markasRead } = PatchContact();
-    const [message, setMessage] = useState(null);
+    const [message, setMessage] = useState([]);
 
     useEffect(() => {
         if (data)
@@ -37,10 +38,21 @@ const Querries = () => {
             <div className={style.header}>Contact Messages</div>
 
 
+            <div className="flex items-center gap-10 m-5">
+                <div className="border p-2 border-orange-500 bg-orange-500/15 rounded-lg">
+                    <p className=" text-xl">Total Messages</p>
+                    <span className="font-bold text-green-500">{message.length}</span>
+                </div>
+
+                <div className="border p-2 border-orange-500 bg-orange-500/15 rounded-lg">
+                    <p className="text-xl">Unread Messages</p>
+                    <span className="font-bold text-red-500">{message.filter(msg => !msg.isRead).length}</span>
+                </div>
+            </div>
             {message && message.map((msg) => (
                 <div key={msg.id}
                     className={style.border}
-                    onClick={() => navigate(`/querry/${msg.id}`)}>
+                    onClick={() => navigate(`/admin/querry/${msg.id}`)}>
                     <div className="justify-between flex">
                         <div>
                             <p className="font-semibold">{msg.name} ({msg.email})</p>
@@ -59,7 +71,10 @@ const Querries = () => {
                     <div className="border border-b m-2" />
                     <div className="flex flex-row gap-5">
 
-                        <button type="submit" className="border bg-gray-300"> Send and Email</button>
+                        <a href={`https://mail.google.com/mail/?view=cm&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}`}
+                            target="_blank"
+                            onClick={(e) => e.stopPropagation()}
+                            className="border rounded-md flex items-center gap-2 px-2 py-1 text-md bg-gray-400 hover:bg-green-400/50 hover:scale-[1.05] duration-300"> Send and Email</a>
                         {!msg.isRead && <button type="button" onClick={(e) => handleMarkAsRead(e, msg.id)}>Mark as Read</button>}
 
                     </div>

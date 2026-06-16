@@ -13,7 +13,7 @@ import UploadFile from "@/components/UploadFile";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import DeleteService from "@/hooks/DeleteService";
+import DeleteService from "@/hooks/Services/DeleteService";
 
 const PatchServices = () => {
     const { id } = useParams();

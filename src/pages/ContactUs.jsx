@@ -6,7 +6,9 @@ import { GrMapLocation } from "react-icons/gr";
 import { BiLogoGmail } from "react-icons/bi";
 import FormInput from "@/components/FormInput";
 import { Button } from "@/components/ui/button";
-import PostContact from "@/hooks/PostContact";
+import PostContact from "@/hooks/Contact/PostContact";
+import { ToastContainer, toast } from "react-toastify";
+import { ContactUs as ContactSchema } from "@/validation/authSchema";
 
 
 const style = {
@@ -29,6 +31,7 @@ const ContactUs = () => {
     const { fetch, success, error } = PostContact();
     return (
         <div className={style.wrapper}>
+            <ToastContainer />
 
             <div className={style.text}>GET IN TOUCH</div>
 
@@ -101,10 +104,16 @@ const ContactUs = () => {
                                             subject: "",
                                             message: ""
                                         }}
+                                        validationSchema={ContactSchema}
                                         onSubmit={async (values, { resetForm }) => {
-                                            await fetch(values);
+                                            try {
+                                                await fetch(values);
+                                                toast.success("Message sent successfully.")
+                                                resetForm();
+                                            } catch (err) {
+                                                toast.error(err.response?.data?.message || "Something went wrong. Please try again.")
 
-                                            resetForm();
+                                            }
                                         }}
                                     >
                                         <Form>
@@ -145,6 +154,7 @@ const ContactUs = () => {
                                             />
 
                                             <Button type="submit" className="mt-2 w-full hover:bg-orange-600 bg-orange-400">Send</Button>
+
                                         </Form>
 
                                     </Formik>

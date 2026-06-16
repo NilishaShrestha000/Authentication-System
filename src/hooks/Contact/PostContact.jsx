@@ -21,6 +21,7 @@ const PostContact = () => {
         catch (err) {
             console.log(err);
             setError(err);
+            throw err
         }
     }
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
-import useServices from "../hooks/useServices";
+import useServices from "../hooks/Services/useServices";
 import { GrPhone } from "react-icons/gr";
 import { GrMapLocation } from "react-icons/gr";
 import { FaGithub } from "react-icons/fa";

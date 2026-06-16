@@ -67,7 +67,28 @@ export const ResetSchema = Yup.object({
         .oneOf([Yup.ref('newPassword')], "Confirm Password must match New Password.")
         .required('Required'),
 
+})
 
+export const ContactUs = Yup.object({
+    name: Yup.string()
+        .min(2, "name must be longer than or equal to 2 characters")
+        .required("Required"),
+
+    email: Yup.string()
+        .email("Enter valid Email Address")
+        .required("Required"),
+
+    phone: Yup.string()
+        .matches(/^[0-9]{7,15}$/, "Phone must be 7-15 digits with no letters or special characters")
+        .required("Required"),
+
+    subject: Yup.string()
+        .min(3, "Subject must be longer than or equal to 3 charecters")
+        .required("Required"),
+
+    message: Yup.string()
+        .min(10, "Messgae must be longer than or equal to 10 charecters")
+        .required("Required")
 })
 
 

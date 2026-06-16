@@ -28,7 +28,7 @@ const ManageService = () => {
                                 <td>{service.isActive ? "Active" : "Inactive"}</td>
                                 <td>{service.tags?.map(tags => (
                                     <div key={tags}>
-                                        {tags}avi
+                                        {tags}
                                     </div>
                                 ))}</td>
                                 <td className="py-3 px-2">

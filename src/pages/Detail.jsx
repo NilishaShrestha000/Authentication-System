@@ -1,8 +1,8 @@
 import Api from "@/Api/api";
 import { useNavigate, useParams } from "react-router-dom";
-import useServices from "@/hooks/useServices";
-import useServiceId from "@/hooks/useServiceId";
-import DeleteService from "@/hooks/DeleteService";
+import useServices from "@/hooks/Services/useServices";
+import useServiceId from "@/hooks/Services/useServiceId";
+import DeleteService from "@/hooks/Services/DeleteService";
 
 const Detail = () => {
     const { id } = useParams();
