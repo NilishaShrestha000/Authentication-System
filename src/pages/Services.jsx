@@ -77,7 +77,7 @@ const Services = () => {
                 {data.map((item) => (
                     <>
                         <div key={item.id}
-                            onClick={() => navigate(`/services/${item.id}`)}
+                            onClick={() => navigate(`/services?id=${item.id}`)}
                             className={style.services}>
                             <img src={`${Api.defaults.baseURL}/public/${item.image}`} className="w-full"></img>
                             <div className="font-bold text-base">{item.title}</div>

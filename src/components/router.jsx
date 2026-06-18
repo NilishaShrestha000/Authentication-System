@@ -18,6 +18,7 @@ import PatchServives from "@/pages/DisplayPatchServices";
 import ErrorPage from "@/hooks/ErrorPage";
 import Querries from "@/pages/Querries";
 import QuerryDetail from "@/pages/QuerryDetail";
+import Profile from "@/pages/Profile";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
             { index: true, element: <Yenya /> },
             { path: "contact", element: <ContactUs /> },
             { path: "services", element: <Services /> },
-            { path: "services/:id", element: <Detail /> },
+            { path: "services", element: <Detail /> },
+            { path: "profile", element: <ProtectedRoute> <Profile /> </ProtectedRoute> },
             { path: "forgot-password", element: <ForgotPassword /> },
             { path: "reset-password", element: <ResetPassword /> },
             {
@@ -69,7 +71,7 @@ const router = createBrowserRouter([
 
 
             {
-                path: "admin/services/:id/patch",
+                path: "admin/services/patch",
                 element: (
                     <ProtectedRoute>
                         <PatchServives />
@@ -87,7 +89,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "admin/querry/:id",
+                path: "admin/querry",
                 element: (
                     <ProtectedRoute>
                         <QuerryDetail />

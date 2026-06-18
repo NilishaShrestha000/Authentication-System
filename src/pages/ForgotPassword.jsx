@@ -29,16 +29,16 @@ const ForgotPassword = () => {
                     }
                 }}>
                 {(formik) => (
-                    <div className="bg-gray-100 h-screen">
+                    <div className=" h-screen">
                         <div className="flex items-center justify-center h-screen transition-all">
-                            <div className=" w-full h-full md:h-3/4 md:w-3/5 bg-white md:rounded-2xl md:border flex">
+                            <div className=" w-full h-full md:h-3/4 md:w-3/5 md:rounded-2xl md:border border-gray-500 flex">
 
                                 {/*left pannel*/}
 
                                 <div className=" w-full flex flex-col items-center justify-center rounded-r-2xl">
 
                                     <div className=" flex flex-col items-center text-center gap-4">
-                                        <div className="flex text-violet-600 items-center justify-center w-15 h-15  bg-violet-100 rounded-full">< FaLock className="text-2xl" /></div>
+                                        <div className="flex text-violet-600 items-center justify-center w-15 h-15  bg-violet-400/50 rounded-full">< FaLock className="text-2xl" /></div>
                                         <h1 className="text-2xl font-bold">Change Password?</h1>
                                         <p className="text-lg text-gray-500">Enter your email address <span className="hidden md:block">and we will allow you to reset your password.</span></p>
                                     </div>
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
                                             </FormInput>
                                         </div>
                                         <div className="mt-5 ">
-                                            <Button className=" w-full bg-violet-600 hover:bg-violet-800">Send Reset Link</Button>
+                                            <Button className=" w-full bg-violet-600/50 hover:bg-violet-800 text-white">Send Reset Link</Button>
                                             <ToastContainer />
                                         </div>
 
@@ -70,10 +70,10 @@ const ForgotPassword = () => {
 
 
                                 {/*right pannel*/}
-                                <div className="hidden md:flex bg-violet-50 w-1/2  items-center justify-center rounded-r-2xl">
+                                <div className="hidden md:flex bg-violet-400/50 w-1/2  items-center justify-center rounded-r-2xl">
 
                                     <img src="/forgot.png"
-                                        className="h-full"></img>
+                                        className="h-100"></img>
                                 </div>
 
 

@@ -12,11 +12,12 @@ import Tags from "@/components/Tags";
 import UploadFile from "@/components/UploadFile";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import DeleteService from "@/hooks/Services/DeleteService";
 
 const PatchServices = () => {
-    const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
     const [service, setService] = useState(null);
 
     useEffect(() => {

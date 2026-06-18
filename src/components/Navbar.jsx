@@ -53,6 +53,7 @@ const Navbar = ({ setSlide }) => {
                                     {menuopen && (
                                         <>
                                             <div className={style.dropdownMenu}>
+                                                <Link to="/profile" onClick={() => setMenuOpen(false)} className={style.dropdownItem}>Profile</Link>
                                                 <Link to="/reset-password" onClick={() => setMenuOpen(false)} className={style.dropdownItem}> Settings</Link>
                                                 <Link to="/admin/queries" onClick={() => setMenuOpen(false)} className={style.dropdownItem}> View Queries </Link>
                                                 <Link to="/logout" onClick={() => setMenuOpen(false)} className={style.dropdownItem}>Logout</Link>

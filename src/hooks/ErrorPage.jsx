@@ -5,15 +5,15 @@ const style = {
 }
 
 const ErrorPage = () => {
-    const error = useRouteError()
-    const navigate = useNavigate()
+    const error = useRouteError();
+    const navigate = useNavigate();
 
     return (
         <div className=" items-center justify-center flex flex-col min-h-screen gap-5">
             <div className="border border-red-500 rounded-full text-2xl text-red-500 bg-red-500/50 h-10 w-10 items-center justify-center flex font-bold">!</div>
 
             <h1 className="text-5xl"> {error?.status} </h1>
-            <p className="text-2xl">{error?.statusText || error?.code.message}</p>
+            <p className="text-2xl">{error?.statusText || error?.code?.message}</p>
             <h1 className="text-gray-500">There seems to be an error. Try again or go back to the home page.</h1>
             <div className="flex gap-10">
                 <button onClick={() => navigate('/')} className={style.button}> Go back Home </button>

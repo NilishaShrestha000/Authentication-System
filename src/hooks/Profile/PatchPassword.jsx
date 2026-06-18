@@ -5,8 +5,6 @@ const PatchMyProfile = () => {
 
 
     useEffect(() => {
-
-
         const handlepatchProfile = async (value) => {
             try {
                 const res = await Api.patch("/api/profile/change-password")

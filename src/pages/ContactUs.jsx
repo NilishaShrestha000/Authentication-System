@@ -148,7 +148,7 @@ const ContactUs = () => {
                                             />
 
                                             <FormInput
-                                                label="message"
+                                                label="Message"
                                                 name='message'
                                                 placeholder='Write why you want to contact us'
                                             />

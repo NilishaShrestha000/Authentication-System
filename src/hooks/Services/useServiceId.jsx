@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Api from "@/Api/api";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const useServiceId = () => {
-    const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
     const [service, setService] = useState([]);
 
 

@@ -1,5 +1,5 @@
 
-import { useParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import GetContactId from "@/hooks/Contact/GetContactId";
 import { Link } from "react-router-dom";
 import { MdMailOutline } from "react-icons/md";
@@ -10,8 +10,8 @@ import { IoTimerOutline } from "react-icons/io5";
 import DeleteQuerry from "@/hooks/Contact/DeleteQuerry";
 
 const QuerryDetail = () => {
-    const { id } = useParams();
-
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
     const { contactid } = GetContactId();
 
 

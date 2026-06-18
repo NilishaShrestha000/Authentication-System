@@ -9,7 +9,7 @@ const GetMyProfile = () => {
         const fetchProfile = async () => {
             try {
                 const res = await Api.get("/api/profile");
-                setGetProfile(res);
+                setGetProfile(res.data);
             }
             catch (err) {
                 console.log(err)
@@ -20,4 +20,4 @@ const GetMyProfile = () => {
 
     return { getprofile }
 }
-export default GetMyProfile();
+export default GetMyProfile;

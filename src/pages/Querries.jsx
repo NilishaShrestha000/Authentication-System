@@ -52,7 +52,7 @@ const Querries = () => {
             {message && message.map((msg) => (
                 <div key={msg.id}
                     className={style.border}
-                    onClick={() => navigate(`/admin/querry/${msg.id}`)}>
+                    onClick={() => navigate(`/admin/querry?id=${msg.id}`)}>
                     <div className="justify-between flex">
                         <div>
                             <p className="font-semibold">{msg.name} ({msg.email})</p>

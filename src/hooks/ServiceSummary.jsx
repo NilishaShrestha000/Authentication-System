@@ -12,9 +12,22 @@ const style = {
     names: "lg:text-lg text-[10px]"
 }
 
+const myObj = {
+    name: "Nilisha"
+}
+
+const myArr = ['0', '2']
+
+console.log(myObj.name);
+
+
+
+
 const ServiceSummary = () => {
 
     const { data } = useServices();
+
+    // type safety
 
     return (
         <>

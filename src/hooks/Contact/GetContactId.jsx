@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import Api from "@/Api/api";
 const GetContactId = () => {
-    const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
     const [contactid, setContactId] = useState([]);
 
     useEffect(() => {

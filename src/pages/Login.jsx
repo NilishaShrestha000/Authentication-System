@@ -40,15 +40,15 @@ const Login = () => {
                 }} >
                 {(formik) => (
                     <>
-                        <div className="bg-gray-100 ">
+                        <div className="bg-background ">
 
                             <div className="flex items-center justify-center h-screen transition-all">
 
-                                <div className="flex w-full h-full md:h-3/4 md:w-3/5  md:border-3 rounded-2xl">
+                                <div className="flex w-full h-full md:h-3/4 md:w-3/5  md:border-3 border-gray-500 rounded-2xl">
 
                                     {/*left pannel*/}
                                     <div className="hidden md:block">
-                                        <div className="bg-violet-600 flex h-full items-center justify-center text-white tracking-wide px-10 rounded-l-2xl ">
+                                        <div className="bg-violet-600/50 flex h-full items-center justify-center tracking-wide px-10 rounded-l-2xl ">
                                             <div className=" flex flex-col items-center text-center">
                                                 <img src="/security.png" className="h-30 w-30 mb-5"></img>
                                                 <h1 className="font-semibold text-2xl mb-5">Welcome Back!</h1>
@@ -58,9 +58,9 @@ const Login = () => {
                                     </div>
 
                                     {/*Right pannel*/}
-                                    <div className="bg-white  w-full md:w-3/4 flex flex-col items-center justify-center md:rounded-r-2xl">
+                                    <div className="  w-full md:w-3/4 flex flex-col items-center justify-center md:rounded-r-2xl mt-5">
                                         <div className=" flex flex-col items-center text-center gap-4">
-                                            <div className="flex text-violet-600 items-center justify-center w-15 h-15  bg-violet-100 rounded-full"><FaRegUser className="text-2xl" /></div>
+                                            <div className="flex text-violet-600 items-center justify-center w-15 h-15  bg-violet-400/50 rounded-full"><FaRegUser className="text-2xl" /></div>
                                             <h1 className="text-2xl font-bold">Login</h1>
                                             <p className="text-lg text-gray-500">Enter your credentials <span className="hidden sm:block">to access your account</span></p>
                                         </div>
@@ -99,7 +99,7 @@ const Login = () => {
                                             </div>
 
                                             <div className="mt-5">
-                                                <Button type="submit" className="w-full bg-violet-600 hover:bg-violet-800">Login</Button>
+                                                <Button type="submit" className="w-full bg-violet-600/50 hover:bg-violet-500 text-white">Login</Button>
                                                 <ToastContainer />
                                             </div>
 

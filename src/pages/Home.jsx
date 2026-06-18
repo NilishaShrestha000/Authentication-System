@@ -15,6 +15,7 @@ const style = {
     browse: " border border-gray-500 hover:border-orange-400 hover:bg-orange-500/50 rounded px-2 py-1 hover:scale-[1.05] duration-300",
     border: "flex border border-orange-400/50 bg-orange-400/10 border-l-5 rounded-lg px-5 py-4 justify-between gap-5"
 }
+
 const Home = () => {
     const { userName } = useProfile();
     const { data } = useServices();

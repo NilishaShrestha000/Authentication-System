@@ -24,13 +24,14 @@ const Yenya = () => {
 
     const navigate = useNavigate();
     const { data } = useServices();
-    const { userName } = useProfile();
-
+    const { isAuthenticated, user } = useAuth();
+    console.log(isAuthenticated)
+    console.log(user)
     return (
         <div className={style.wrapper}>
 
             <div className={style.header}>
-                Welcome, {userName}
+                Welcome, {isAuthenticated ? user.fullName : 'Guest'}
             </div>
 
             <div className="text-sm text-slate-400 mt-2">
@@ -51,7 +52,7 @@ const Yenya = () => {
             <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 transition-all mt-3">
                 {data.map((item) => (
                     <div key={item.id}
-                        onClick={() => navigate(`/services/${item.id}`)}
+                        onClick={() => navigate(`/services?id=${item.id}`)}
                         className={style.services}>
                         <img src={`${Api.defaults.baseURL}/public/${item.image}`} className="w-full"></img>
                         <div className="font-bold text-base">{item.title}</div>

@@ -1,11 +1,12 @@
 import Api from "@/Api/api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import useServices from "@/hooks/Services/useServices";
 import useServiceId from "@/hooks/Services/useServiceId";
 import DeleteService from "@/hooks/Services/DeleteService";
 
 const Detail = () => {
-    const { id } = useParams();
+    const [searchParams] = useSearchParams();
+    const id = searchParams.get("id");
     const { data } = useServices();
     const { service } = useServiceId();
     const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Detail = () => {
             <div className="flex gap-4 px-5 py-2 transition-all overflow-scroll scrollbar-none">
                 {data.filter(item => item.id !== id).map((item) => (
                     <div key={item.id}
-                        onClick={() => navigate(`/services/${item.id}`)}
+                        onClick={() => navigate(`/services?id=${item.id}`)}
                         className="group min-w-50 bg-white/10 hover:bg-violet-400/15 border border-gray-500 hover:border-violet-400/60 hover:text-violet-400 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.05] px-4 py-3">
                         <img src={`${Api.defaults.baseURL}/public/${item.image}`} className="w-full"></img>
                         <div className="font-bold text-base">{item.title}</div>
